@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filmxfree</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/06a651c8da.js"></script>
+</head>
+
+<body>
+  <div id="navbar">
+    <img id="logo" src="logo.png.png" alt="Logo">
+    <ul id="navlinks">
+      <li>Home</li>
+      <li>Serie Tv</li>
+      <li>Film</li>
+    </ul>
+    <img id="search-icon" src="search-icon.png" alt="Cerca">
+  </div>
+  <div id="preview-container">
+    <video id="videoPlayer0" autoplay muted controls>
+      <source src="Top Gun.mp4.mp4">
+    </video>
+    <div id="preview-overlay">
+      <div id="preview-details">
+        <h3>Top Gun</h3>
+        <button onclick="playPauseVideo(0)"><i class="fas fa-play"></i> Play/Pause</button>
+        <button onclick="toggleFullScreen(0)"><i class="fas fa-expand"></i> Fullscreen</button>
+        <button onclick="seekBackward(0)"><i class="fas fa-backward"></i> Backward</button>
+        <button onclick="seekForward(0)"><i class="fas fa-forward"></i> Forward</button>
+      </div>
+    </div>
+  </div>
+  <div id="preview-container">
+    <video id="videoPlayer1" autoplay muted controls>
+      <source src="Notting Hill.mp4">
+    </video>
+    <div id="preview-overlay">
+      <div id="preview-details">
+        <h3>Notting Hill</h3>
+        <button onclick="playPauseVideo(1)"><i class="fas fa-play"></i> Play/Pause</button>
+        <button onclick="toggleFullScreen(1)"><i class="fas fa-expand"></i> Fullscreen</button>
+        <button onclick="seekBackward(1)"><i class="fas fa-backward"></i> Backward</button>
+        <button onclick="seekForward(1)"><i class="fas fa-forward"></i> Forward</button>
+      </div>
+    </div>
+  </div>
+  <div id="categories">
+    <div class="category">
+      <h3>Azione & Avventura</h3>
+      <img src="top gun.jpg" alt="Film" onclick="playPauseVideo(0)">
+    </div>
+    <div class="category">
+      <h3>Romantico</h3>
+      <img src="notting hill.jpg" alt="Film" onclick="playPauseVideo(1)">
+    </div>
+  </div>
+
+  <script>
+    function playPauseVideo(index) {
+      var videoPlayer = document.getElementById("videoPlayer" + index);
+
+      if (videoPlayer.paused) {
+        videoPlayer.play();
+      } else {
+        videoPlayer.pause();
+      }
+    }
+
+    function toggleFullScreen(index) {
+      var videoPlayer = document.getElementById("videoPlayer" + index);
+
+      if (videoPlayer.requestFullscreen) {
+        videoPlayer.requestFullscreen();
+      } else if (videoPlayer.mozRequestFullScreen) {
+        videoPlayer.mozRequestFullScreen();
+      } else if (videoPlayer.webkitRequestFullscreen) {
+        videoPlayer.webkitRequestFullscreen();
+      } else if (videoPlayer.msRequestFullscreen) {
+        videoPlayer.msRequestFullscreen();
+      }
+    }
+
+    function seekBackward(index) {
+      var videoPlayer = document.getElementById("videoPlayer" + index);
+      videoPlayer.currentTime -= 10;
+    }
+
+    function seekForward(index) {
+      var videoPlayer = document.getElementById("videoPlayer" + index);
+      videoPlayer.currentTime += 10;
+    }
+  </script>
+</body>
+
+</html>
+
+
